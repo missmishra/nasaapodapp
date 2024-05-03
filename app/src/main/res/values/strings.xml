@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">NasaApodApp</string>
+    <string name="title_apod">"APOD: "</string>
+    <string name="apod_sub_header">Astronomy Picture of day \n \n \n \n \n \n \n \n </string>
+    <string name="label_history">30 Days of APOD History</string>
+    <string name="label_test_tag_progress">progress</string>
+    <string name="label_test_tag_error">error</string>
+    <string name="fall_image_url">https://apod.nasa.gov/apod/image/2403/medieval_fragment50p.jpg</string>
+    <string name="label_img_apod_image">APOD Image</string>
 </resources>

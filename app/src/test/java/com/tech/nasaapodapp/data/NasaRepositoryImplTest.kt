@@ -1,9 +1,11 @@
 package com.tech.nasaapodapp.data
 
 
-import com.tech.nasaapodapp.data.remote.NasaApodAPI
-import com.tech.nasaapodapp.data.remote.dto.NasaApodDataItem
-import com.tech.nasaapodapp.data.repository.NasaApodRepositoryImpl
+import com.tech.nasaapodapp.TestUtils
+import com.tech.nasaapodapp.nasa_feature.data.remote.NasaApodAPI
+import com.tech.nasaapodapp.nasa_feature.data.remote.model.NasaApodDataItem
+import com.tech.nasaapodapp.nasa_feature.data.repository.NasaApodRepositoryImpl
+import com.tech.nasaapodapp.nasa_feature.domain.repository.NasaApodRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -27,11 +29,11 @@ import kotlin.test.assertFailsWith
 @Suppress("DEPRECATION")
 @ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)
-class NasaApodRepositoryImplTest {
+class NasaRepositoryImplTest {
 
     @MockK
     private lateinit var nasaApodApi: NasaApodAPI
-    private lateinit var repository: NasaApodRepositoryImpl
+    private lateinit var repository: NasaApodRepository
 
     private val testDispatcher = UnconfinedTestDispatcher()
 
@@ -68,10 +70,10 @@ class NasaApodRepositoryImplTest {
         coEvery { nasaApodApi.getApod(apiKey, date) } returns expectedData
 
         // Act
-        val result = repository.getNasaApod(apiKey, date)
+        val result = repository.getNasaApod(TestUtils.fakeApiKey, TestUtils.fakeDate)
 
         // Assert
-        coVerify { nasaApodApi.getApod(apiKey, date) }
+        coVerify { nasaApodApi.getApod(TestUtils.fakeApiKey, TestUtils.fakeDate) }
         assertEquals(expectedData, result)
     }
 

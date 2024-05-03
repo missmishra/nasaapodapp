@@ -1,16 +1,15 @@
 package com.tech.nasaapodapp.domain
 
-import com.tech.nasaapodapp.data.remote.dto.NasaApodDataItem
-import com.tech.nasaapodapp.domain.repository.NasaApodRepository
-import com.tech.nasaapodapp.domain.usecase.GetNasaApodDataUsecase
-import com.tech.nasaapodapp.util.Constant
-import com.tech.nasaapodapp.util.Resource
+import com.tech.nasaapodapp.nasa_feature.data.remote.model.NasaApodDataItem
+import com.tech.nasaapodapp.nasa_feature.domain.repository.NasaApodRepository
+import com.tech.nasaapodapp.nasa_feature.domain.usecase.GetNasaApodDataUsecase
+import com.tech.nasaapodapp.core.util.Constant
+import com.tech.nasaapodapp.core.util.Resource
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
@@ -22,7 +21,6 @@ class GetNasaApodDataUsecaseTest {
 
     private lateinit var getNasaApodDataUsecase: GetNasaApodDataUsecase
     private lateinit var repository: NasaApodRepository
-    private val testDispatcher = UnconfinedTestDispatcher()
 
     @Before
     fun setup() {
