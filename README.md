@@ -1,6 +1,9 @@
 # NASA APOD App
 NASA APOD App is a simple application that fetches and displays the Astronomy Picture of the Day along with its description from NASA's APOD API.
 
+## DEMO
+https://github.com/missmishra/nasaapodapp/raw/main/app/src/main/res/drawable/nasaapp_recording.mp4
+
 ## Features
 View the Astronomy Picture of the Day
 Read the description of the image provided by NASA
