@@ -16,17 +16,19 @@ fun AppTopBar(
     isNavigateBack: Boolean,
     navigateBack: () -> Unit
 ) {
-    TopAppBar(title = {
-        Text(text = appBarTitle)
-    }, navigationIcon = {
-        if(isNavigateBack) {
-            IconButton(onClick = { navigateBack() }) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "back press",
-                )
+    TopAppBar(
+        title = {
+            Text(text = appBarTitle)
+        },
+        navigationIcon = {
+            if (isNavigateBack) {
+                IconButton(onClick = { navigateBack() }) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "back press",
+                    )
+                }
             }
-        }
-    }
+        },
     )
 }

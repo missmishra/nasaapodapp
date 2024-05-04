@@ -32,7 +32,6 @@ class NasaApodScreenTest {
 
     @Test
     fun nasaApodScreen_showsLoadingIndicator() {
-
         composeTestRule.apply {
             onNodeWithTag(APOD_LISTING_LOADING).assertIsDisplayed()
         }

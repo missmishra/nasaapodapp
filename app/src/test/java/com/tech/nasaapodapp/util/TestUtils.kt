@@ -1,4 +1,4 @@
-package com.tech.nasaapodapp
+package com.tech.nasaapodapp.util
 
 import com.tech.nasaapodapp.nasa_feature.data.remote.model.NasaApodDataItem
 
