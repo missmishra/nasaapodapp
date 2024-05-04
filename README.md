@@ -1,8 +1,11 @@
 # NASA APOD App
 NASA APOD App is a simple application that fetches and displays the Astronomy Picture of the Day along with its description from NASA's APOD API.
 
-## DEMO
-https://github.com/missmishra/nasaapodapp/raw/main/app/src/main/res/drawable/nasaapp_recording.mp4
+## ScreenShot
+|APOD LISTING|APOD DETAIL|CODESTRUCTURE|
+|:---:|:---:|:---:|
+|<img width="300" src="https://github.com/missmishra/nasaapodapp/assets/26162399/37884bdd-d578-4ec9-97c7-3cd18c3b7657">|<img width="300" alt="" src="https://github.com/missmishra/nasaapodapp/assets/26162399/8bdf2ac8-633f-4d42-a06e-8fdcec64e76c">|<img width="300" alt="" src="https://github.com/missmishra/nasaapodapp/assets/26162399/c9159c4d-dbc5-4071-be0b-3bfacbf3dce7">|
+
 
 ## Features
 View the Astronomy Picture of the Day
@@ -13,6 +16,7 @@ Screenshots
 
 ## Technologies Used
  * Kotlin
+ *  * Dagger - Hilt DI
  * Retrofit for API requests
  * Dagger - Hilt DI
  * JetPackCompose for Screen Design
@@ -32,3 +36,4 @@ Swipe left or right to navigate to previous or next days' pictures.
 
 ## Contributing
 Contributions are welcome! Feel free to open issues or pull requests for any improvements or features you'd like to add.
+
