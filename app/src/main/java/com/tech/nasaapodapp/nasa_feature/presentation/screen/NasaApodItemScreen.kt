@@ -19,17 +19,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.tech.nasaapodapp.R
 import com.tech.nasaapodapp.core.util.Constant.TestTags.APOD_DETAILS__SCREEN
-import com.tech.nasaapodapp.nasa_feature.presentation.viewmodel.NasaApodViewModel
-import com.tech.nasaapodapp.nasa_feature.presentation.viewmodel.SharedViewModel
+import com.tech.nasaapodapp.nasa_feature.presentation.theme.NasaApodAppTheme
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun NasaApodItemScreen(sharedViewModel: SharedViewModel) {
-    val apodItem = sharedViewModel.nasaApodItem.value
+fun NasaApodItemScreen(model: String, explanation: String) {
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -48,7 +48,7 @@ fun NasaApodItemScreen(sharedViewModel: SharedViewModel) {
                     .width(300.dp)
                     .height(250.dp)
                     .align(Alignment.CenterHorizontally),
-                model = apodItem?.hdurl,
+                model = model,
                 contentDescription = stringResource(R.string.label_img_apod_image),
                 placeholder = painterResource(
                     id = R.drawable.placeholder
@@ -60,8 +60,21 @@ fun NasaApodItemScreen(sharedViewModel: SharedViewModel) {
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = apodItem?.explanation ?: "", style = MaterialTheme.typography.bodyMedium
+                text = explanation, style = MaterialTheme.typography.bodyMedium
             )
         }
+    }
+}
+
+
+@RequiresApi(Build.VERSION_CODES.O)
+@Preview
+@Composable
+private fun NasaApodItemScreenPreview() {
+    NasaApodAppTheme {
+        NasaApodItemScreen(
+            model = "model",
+            explanation = "explanation",
+        )
     }
 }

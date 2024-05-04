@@ -13,25 +13,23 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.tech.nasaapodapp.R
-import com.tech.nasaapodapp.core.navigation.NavDestination
+import com.tech.nasaapodapp.core.util.Constant.TestTags.APOD_CARD_ITEM
 import com.tech.nasaapodapp.nasa_feature.data.remote.model.NasaApodDataItem
-import com.tech.nasaapodapp.nasa_feature.presentation.viewmodel.NasaApodViewModel
-import com.tech.nasaapodapp.nasa_feature.presentation.viewmodel.SharedViewModel
 import timber.log.Timber
 
 @Composable
-fun CardsItem(index: Int,
-              apodDataList: List<NasaApodDataItem>,
-              sharedViewModel: SharedViewModel,
-              navController: NavController
+fun CardsItem(
+    index: Int,
+    apodDataList: List<NasaApodDataItem>,
+    onClick: (NasaApodDataItem) -> Unit
 ) {
     val apodData = apodDataList[index]
     Card(
@@ -39,14 +37,14 @@ fun CardsItem(index: Int,
             .width(300.dp)
             .height(350.dp)
             .padding(20.dp)
+            .testTag(APOD_CARD_ITEM)
             .background(MaterialTheme.colorScheme.onBackground),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 10.dp
         ),
         onClick = {
             Timber.e("LISTING SCREEN onClick: $index")
-            sharedViewModel.nasaApodItem.value = apodData
-            navController.navigate(NavDestination.APODDETAIL)
+            onClick(apodData)
         }
     ) {
         Column(

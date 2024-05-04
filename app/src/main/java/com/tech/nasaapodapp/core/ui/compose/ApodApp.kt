@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavBackStackEntry
@@ -45,10 +46,17 @@ fun ApodApp(
         ) {
             composable(NavDestination.APODLIST) {
                 val nasaApodViewModel = hiltViewModel<NasaApodViewModel>()
-                NasaApodScreen(navController, nasaApodViewModel, sharedViewModel)
+                NasaApodScreen(
+                    nasaApodViewModel.state.collectAsState(),
+                    onClick = { apodData ->
+                        sharedViewModel.nasaApodItem.value = apodData
+                        navController.navigate(NavDestination.APODDETAIL)
+                    },
+                )
             }
             composable(NavDestination.APODDETAIL) {
-                NasaApodItemScreen(sharedViewModel)
+                val apodItem = sharedViewModel.nasaApodItem.value
+                NasaApodItemScreen(apodItem?.hdurl.orEmpty(), apodItem?.explanation.orEmpty())
             }
         }
     }

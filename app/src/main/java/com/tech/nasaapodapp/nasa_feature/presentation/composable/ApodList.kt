@@ -15,17 +15,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.tech.nasaapodapp.R
 import com.tech.nasaapodapp.nasa_feature.data.remote.model.NasaApodDataItem
-import com.tech.nasaapodapp.nasa_feature.presentation.viewmodel.NasaApodViewModel
-import com.tech.nasaapodapp.nasa_feature.presentation.viewmodel.SharedViewModel
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ApodList(
     apodList: List<NasaApodDataItem>, modifier: Modifier,
-    navController: NavController, sharedViewModel: SharedViewModel
+    onClick: (NasaApodDataItem) -> Unit
 ) {
     Column(
         modifier = modifier,
@@ -48,8 +45,7 @@ fun ApodList(
                 CardsItem(
                     index = index,
                     apodDataList = apodList,
-                    sharedViewModel = sharedViewModel,
-                    navController
+                    onClick = { item -> onClick(item) }
                 )
             }
         }
